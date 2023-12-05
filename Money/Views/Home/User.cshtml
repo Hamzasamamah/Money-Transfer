@@ -1,0 +1,382 @@
+﻿@model Tuple<IEnumerable<HomeContent>, IEnumerable<AboutUsContent>,IEnumerable<Testimonial>,IEnumerable<ContactUs>>
+@{
+     Layout = "~/views/shared/_UserLayout.cshtml";
+}
+
+
+
+<!--Home Start-->
+<div class="hero-wrap">
+    <div class="home-slider owl-carousel">
+        @foreach (var item in Model.Item1)
+        {
+            switch (item.Id)
+            {
+
+
+                case 1:
+                    <div class="slider-item" style="background-image:url(/HomeAssets/images/bg_1.jpg);">
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                <div class="col-md-8 ftco-animate">
+                                    <div class="text w-100 text-center">
+                                        <h2>We Business Grow</h2>
+                                        <h1 class="mb-4">@item.Content</h1>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    break;
+                case 2:
+                    <div class="slider-item" style="background-image:url(/HomeAssets/images/bg_2.jpg);">
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                <div class="col-md-8 ftco-animate">
+                                    <div class="text w-100 text-center">
+                                        <h2>We Support Business</h2>
+                                        <h1 class="mb-4">@item.Content</h1>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    break;
+                case 3:
+                    <div class="slider-item" style="background-image:url(/HomeAssets/images/bg_3.jpg);">
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                <div class="col-md-8 ftco-animate">
+                                    <div class="text w-100 text-center">
+                                        <h2>We Give Advice</h2>
+                                        <h1 class="mb-4">@item.Content</h1>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    break;
+            }
+        }
+    </div>
+</div>
+<!--Home End-->
+
+<!--Aboust Us Start-->
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row d-flex no-gutters">
+            <div class="col-md-6 d-flex">
+                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(/HomeAssets/images/about.jpg);">
+                </div>
+            </div>
+            <div class="col-md-6 pl-md-5 py-md-5">
+                <div class="heading-section pl-md-4 pt-md-5">
+                    <h2>About Us</h2>
+                    <h3 class="mb-4">Move Your Funds With Speed And Simplicity</h3>
+                </div>
+                @foreach (var item in Model.Item2)
+                {
+                    switch (item.Id)
+                    {
+
+                        case 4:
+                            <div class="services-2 w-100 d-flex">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-wealth"></span></div>
+                                <div class="text pl-4">
+                                    <h4>Our Website</h4>
+                                    <p>@item.Content </p>
+                                </div>
+                            </div>
+                            break;
+                        case 5:
+                            <div class="services-2 w-100 d-flex">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-accountant"></span></div>
+                                <div class="text pl-4">
+                                    <h4>Money Transfer</h4>
+                                    <p>@item.Content</p>
+                                </div>
+                            </div>
+                            break;
+                        case 6:
+                            <div class="services-2 w-100 d-flex">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-teamwork"></span></div>
+                                <div class="text pl-4">
+                                    <h4>Collaboration With Banks</h4>
+                                    <p>@item.Content</p>
+                                </div>
+                            </div>
+                            break;
+                        case 7:
+                            <div class="services-2 w-100 d-flex">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-accounting"></span></div>
+                                <div class="text pl-4">
+                                    <h4>Speed and Security</h4>
+                                    <p>@item.Content</p>
+                                </div>
+                            </div>
+                            break;
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!--Aboust Us End-->
+
+<!--testimonial Strat-->
+
+<form class="mr-5 ml-5 mb-5" asp-controller="Testimonials" asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Item3.FirstOrDefault().Content" class="control-label"></label>
+        <input asp-for="Item3.FirstOrDefault().Content" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+
+@if (TempData.ContainsKey("TestimonialMessage"))
+{
+    <div class="alert alert-success">
+        @TempData["TestimonialMessage"]
+    </div>
+}
+
+
+<section class="ftco-section testimony-section bg-light">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+            <div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
+                <span class="subheading">Testimonies</span>
+                <h2>Happy Clients &amp; Feedbacks</h2>
+            </div>
+        </div>
+        <div class="row ftco-animate">
+            <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel ftco-owl">
+                    <div class="item">
+                        <div class="testimony-wrap py-4">
+                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                            <div class="text">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="user-img" style="background-image: url(/HomeAssets/images/person_1.jpg)"></div>
+                                    <div class="pl-3">
+                                        <p class="name">Roger Scott</p>
+                                        <span class="position">Marketing Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap py-4">
+                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                            <div class="text">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="user-img" style="background-image: url(/HomeAssets/images/person_2.jpg)"></div>
+                                    <div class="pl-3">
+                                        <p class="name">Roger Scott</p>
+                                        <span class="position">Marketing Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap py-4">
+                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                            <div class="text">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="user-img" style="background-image: url(/HomeAssets/images/person_3.jpg)"></div>
+                                    <div class="pl-3">
+                                        <p class="name">Roger Scott</p>
+                                        <span class="position">Marketing Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap py-4">
+                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                            <div class="text">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="user-img" style="background-image: url(/HomeAssets/images/person_1.jpg)"></div>
+                                    <div class="pl-3">
+                                        <p class="name">Roger Scott</p>
+                                        <span class="position">Marketing Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap py-4">
+                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                            <div class="text">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="user-img" style="background-image: url(/HomeAssets/images/person_2.jpg)"></div>
+                                    <div class="pl-3">
+                                        <p class="name">Roger Scott</p>
+                                        <span class="position">Marketing Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--testimonial End-->
+<!--FAQ Start-->
+<section class="ftco-section ftco-no-pt bg-light ftco-faqs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="img-faqs w-100">
+                    <div class="img mb-4 mb-sm-0" style="background-image:url(/HomeAssets/images/about-2.jpg);">
+                    </div>
+                    <div class="img img-2 mb-4 mb-sm-0" style="background-image:url(/HomeAssets/images/about-1.jpg);">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 pl-lg-5">
+                <div class="heading-section mb-5 mt-5 mt-lg-0">
+                    <span class="subheading">FAQs</span>
+                    <h2 class="mb-3">Frequently Asks Questions</h2>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                </div>
+                <div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
+                    <div class="card">
+                        <div class="card-header p-0" id="headingOne">
+                            <h2 class="mb-0">
+                                <button href="#collapseOne" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                                    <p class="mb-0">
+                                        Can I send money to my friends using my wallet?
+                                    </p>
+                                    <i class="fa" aria-hidden="true"></i>
+                                </button>
+                            </h2>
+                        </div>
+                        <div class="collapse show" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="card-body py-3 px-0">
+                                <p>Yes, you can send money to your friends using your wallet. Simply log in to your account, navigate to the "transaction" section, enter your friend's wallet IBAN , specify the amount, and confirm the transaction.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header p-0" id="headingTwo" role="tab">
+                            <h2 class="mb-0">
+                                <button href="#collapseTwo" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
+                                    <p class="mb-0">
+                                        How long does it take for the money to reach my friend's wallet?
+                                    </p>
+                                    <i class="fa" aria-hidden="true"></i>
+                                </button>
+                            </h2>
+                        </div>
+                        <div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="card-body py-3 px-0">
+                                <p>
+                                    The transfer time depends on various factors, including network congestion and processing times.
+                                    Typically, transactions are processed within a few minutes, but it may take longer during peak periods.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header p-0" id="headingThree" role="tab">
+                            <h2 class="mb-0">
+                                <button href="#collapseThree" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
+                                    <p class="mb-0">
+                                        Are there any fees associated with sending money from my wallet?
+                                    </p>
+                                    <i class="fa" aria-hidden="true"></i>
+                                </button>
+                            </h2>
+                        </div>
+                        <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="card-body py-3 px-0">
+                                <p>
+                                    If the transformation was on the same bank, the transformation will be
+                                    free, but if the transformation was from one bank to another, then the
+                                    website will take a commission of 0.5% from the transformation
+                                    amount.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header p-0" id="headingFour" role="tab">
+                            <h2 class="mb-0">
+                                <button href="#collapseFour" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
+                                    <p class="mb-0">How can I track my transaction history?</p>
+                                    <i class="fa" aria-hidden="true"></i>
+                                </button>
+                            </h2>
+                        </div>
+                        <div class="collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="card-body py-3 px-0">
+                                <p>
+                                    You can Search between two dates for the payment that took place during this
+                                    period.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--FAQ End-->
+
+
+<form class="mr-5 ml-5 mb-5" asp-controller="ContactUs" asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Item4.FirstOrDefault().Email" class="control-label"></label>
+        <input asp-for="Item4.FirstOrDefault().Email" class="form-control" />
+        <span asp-validation-for="Item4.FirstOrDefault().Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Item4.FirstOrDefault().PhoneNum" class="control-label"></label>
+        <input asp-for="Item4.FirstOrDefault().PhoneNum" class="form-control" />
+        <span asp-validation-for="Item4.FirstOrDefault().PhoneNum" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Item4.FirstOrDefault().Message" class="control-label"></label>
+        <input asp-for="Item4.FirstOrDefault().Message" class="form-control" />
+        <span asp-validation-for="Item4.FirstOrDefault().Message" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="submit" class="btn btn-primary" />
+    </div>
+</form>
+
+
+
+
+
+

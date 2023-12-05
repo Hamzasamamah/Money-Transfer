@@ -1,0 +1,39 @@
+﻿@using Money.Models;
+@model List<SearchResult>
+@{
+
+    ViewData["Title"] = "Search Result";
+    Layout = "~/views/shared/_UserLayout.cshtml";
+}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url(/HomeAssets/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="User">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Banks <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-0 bread">Banks</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<h1>Banks</h1>
+<div class="container">
+    <div class="row">
+        @foreach (var result in Model)
+    {
+            <div class="card  ml-2 mr-2 mt-3">
+                <div class="card-body">
+                <h5 class="card-title">@result.Title</h5>
+                <p class="card-text">Experience seamless money transfers and financial freedom. Create your wallet now and send funds with ease.</p>
+               <a asp-controller="Wallets" asp-action="Create"  class="btn btn-primary"> Create a wallet </a>
+
+                </div>
+            </div>
+    }
+    </div>
+    
+</div>
+

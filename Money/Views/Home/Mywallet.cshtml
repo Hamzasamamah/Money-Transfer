@@ -1,0 +1,58 @@
+﻿@model Tuple<IEnumerable<Bank>, IEnumerable<Wallet>>
+
+@{
+    Layout = "~/views/shared/_UserLayout.cshtml";
+}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url(/HomeAssets/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="User">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>My wallet <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-0 bread">My Wallet</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<div class="row justify-content-center">
+
+@foreach (var item in Model.Item2)
+{
+    @if (item.UserId == (int)Context.Session.GetInt32("CustomerId"))
+    {
+        <div class="card mr-5 mb-5 ml-5 mt-5" style="width: 25rem;">
+            <div class="card-body">
+                <h4 class="card-title">Bank Name: @GetBankName(item.BankId)</h4>
+                <h5 class="card-text">Your Iban: @item.Iban</h5>
+                <h5 class="card-text">Wallet Balance: @item.Balance</h5>
+
+                @if (item.Active == true)
+                {
+                    <h5 class="card-text">Status: Active</h5>
+                }
+                else
+                {
+                    <h5 class="card-text">Status: Not Active</h5>
+                }
+                    <a asp-controller="Wallets" asp-action="Recharge" asp-route-Id="@item.Id" class="btn btn-primary">
+                        Recharge
+                    </a>
+            </div>
+        </div>
+    }
+}
+    </div>
+@functions {
+    // Function to get the bank name based on the bank ID
+    public string GetBankName(int bankId)
+    {
+        var bankName = Model.Item1.FirstOrDefault(b => b.Id == bankId)?.Name;
+        return bankName ?? "Unknown Bank";
+    }
+}

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Money_Transformer.Models.Transaction>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href ="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+
+<div class="container" style="max-width: 1200px;">
+    <div class="p-3 mb-2 bg-dark text-white text-center font-weight-bold">Report 1</div>
+        <div class="row">
+             <div class="col-6">
+                <form asp-action="Report" method="post">
+                    <input type="date" class="form-control" name="stratDate" placeholder="Start Date">
+                    <input type="date" class="form-control" name="endDate" placeholder="End Date">
+                <button type="submit" class="btn btn-dark btn-search">Search</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10">
+            <table class="table example">
+                <thead>
+                    <tr>
+                        <th>
+                            Sender Iban 
+                        </th>
+                        <th>
+                            Receiver Iban
+                        </th>
+                        <th>
+                             Amount
+                        </th>
+                        <th>
+                            Fees
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        
+                    </tr>
+                </thead><tbody>
+                      @if (Model != null)
+                      {
+                            @foreach (var item in Model)
+                            {
+                             <tr>
+                                <td> @Html.DisplayFor(modelItem =>item.SenderIban)</td>
+                                <td> @Html.DisplayFor(modelItem =>item.ReceiverIban)</td>
+                                <td> @Html.DisplayFor(modelItem =>item.Amount)</td>
+                                <td> @Html.DisplayFor(modelItem =>item.Fees)</td>
+                                        <td> @Html.DisplayFor(modelItem =>item.Date)</td>
+                                                        
+                             </tr>
+                            }
+                      }
+                      else
+                      {
+                          <p>No data available</p>
+                      }
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+
+</div>
+  
+    

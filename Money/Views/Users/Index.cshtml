@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Money_Transformer.Models.User>
+
+@{
+    Layout = "~/views/shared/_GuestLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h3>Users</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Full Name
+            </th>
+            <th>
+                    Email
+            </th>
+            <th>
+                    Image
+            </th>
+            <th>
+                    Role ID
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                        <img src=@Url.Content("~/Images/" + item.ImagePath)
+                         asp-append-version="true" style="border-radius:20%;"
+                         width="100" height="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.Id)
+            </td>
+            <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

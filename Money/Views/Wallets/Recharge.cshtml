@@ -1,0 +1,62 @@
+﻿@model Money_Transformer.Models.Wallet
+
+@{
+    Layout = "~/views/shared/_UserLayout.cshtml";
+}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url(/HomeAssets/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="User">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>My wallet <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-0 bread">My Wallet</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<h4>Recharge Wallet</h4>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="card mb-4" style="">
+        <div class="card-header" style="background-color: black; color: white;">
+            Recharge Balance
+        </div>
+        <div class="card-body">
+            <div class="col-md-4">
+                <form asp-action="Recharge">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label for="CardNum" class="control-label">Card Number</label>
+                        <input type="text" class="form-control" name="cardNum" placeholder="Card Number" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="ExDate" class="control-label">Expiration Date</label>
+                        <input type="month" class="form-control" name="exDate" placeholder="Expiration Date" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="HolderName" class="control-label">Holder Name</label>
+                        <input type="text" class="form-control" name="holderName" placeholder="Holder Name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Cvv" class="control-label">CVV</label>
+                        <input type="text" class="form-control" name="cvv" placeholder="CVV" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Balance" class="control-label">Balance to add</label>
+                        <input type="number" class="form-control"name="balance" placeholder="balance" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div>

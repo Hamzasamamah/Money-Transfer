@@ -1,0 +1,74 @@
+﻿@model Money_Transformer.Models.Transaction
+
+@{
+    Layout = "~/views/shared/_UserLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url(/HomeAssets/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+          <div class="col-md-9 ftco-animate pb-5">
+                    <p class="breadcrumbs mb-2"><span class="mr-2"><a href="User">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Transaction <i class="ion-ios-arrow-forward"></i></span></p>
+                    <h1 class="mb-0 bread">Transaction</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+<h4>Transaction</h4>
+<hr />
+
+    @if (TempData["TransactionMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["TransactionMessage"]</div>
+    }
+
+<div class="row justify-content-center">
+        <div class="card mb-4" style="">
+            <div class="card-header" style="background-color: black; color: white;">
+                Send Money
+            </div>
+            <div class="card-body">
+                  <div class="col-md-4">
+                      <form asp-action="Create">
+                          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                          <div class="form-group">
+                              <label asp-for="SenderIban" class="control-label"></label>
+                              <input asp-for="SenderIban" class ="form-control" />
+                          </div>
+                          <div class="form-group">
+                              <label asp-for="ReceiverIban" class="control-label"></label>
+                              <input asp-for="ReceiverIban" class ="form-control" />
+                          </div>
+                          <div class="form-group">
+                              <label asp-for="Amount" class="control-label"></label>
+                              <input asp-for="Amount" class="form-control" />
+                              <span asp-validation-for="Amount" class="text-danger"></span>
+                          </div>
+                          <div class="form-group">
+                              <input type="submit" value="Create" class="btn btn-primary" />
+                          </div>
+                      </form>
+                  </div>
+            </div>
+        </div>
+</div>
+  
+    <div>
+   @* <a asp-action="Index">Back to List</a>*@
+</div>
+
+</body>
+</html>

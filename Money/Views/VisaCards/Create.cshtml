@@ -1,0 +1,60 @@
+﻿@model Money_Transformer.Models.VisaCard
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>VisaCard</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CardNum" class="control-label"></label>
+                <input asp-for="CardNum" class="form-control" />
+                <span asp-validation-for="CardNum" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                    <label asp-for="ExDate" class="control-label"></label>
+                    <div class="input-group">
+                        <input asp-for="ExDate" class="form-control" type="month" />
+                    </div>
+                </div>
+            <div class="form-group">
+                <label asp-for="HolderName" class="control-label"></label>
+                <input asp-for="HolderName" class="form-control" />
+                <span asp-validation-for="HolderName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cvv" class="control-label"></label>
+                <input asp-for="Cvv" class="form-control" />
+                <span asp-validation-for="Cvv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Balance" class="control-label"></label>
+                <input asp-for="Balance" class="form-control" />
+                <span asp-validation-for="Balance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

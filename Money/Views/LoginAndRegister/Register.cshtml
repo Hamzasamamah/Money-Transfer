@@ -1,0 +1,80 @@
+﻿@model User
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/LoginAndRegisterAssets/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/LoginAndRegisterAssets/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="~/LoginAndRegisterAssets/images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                        <form asp-action="Register"class="register-form" id="register-form" enctype="multipart/form-data">
+                        <h2 class="form-title">Create account</h2>
+
+                            <div class="form-group">
+                                <label asp-for="Fullname">
+                                    <i class="zmdi zmdi-account material-icons-name"></i>
+                                </label>
+                            <input asp-for="Fullname" class="form-input"  placeholder="First Name" />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="Email">
+                                    <i class="zmdi zmdi-email"></i>
+                                </label>
+                            <input asp-for="Email" class="form-input" placeholder="Email" />
+                            </div>
+                            
+                            <div class="form-group">
+                            <label asp-for="ImageFile"><i class="zmdi zmdi-account material-icons-name"><h4>Image</h4></i></label>
+                                <input asp-for="ImageFile" />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="Username">
+                                <i class="zmdi zmdi-account material-icons-name"></i>
+                                </label>
+                            <input asp-for="Username" class="form-input" placeholder="User Name" />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="Password">
+                                    <i class="zmdi zmdi-lock-outline"></i>
+                                </label>
+                            <input asp-for="Password" type="password" class="form-input"  placeholder="Password" />
+                            </div>
+                            
+                            <div class="form-group formbutton">
+                                <input type="submit"
+                                       name="signup" id="signup" class="form-submit"
+                                       value="Register" />
+                            </div>
+                        
+                        </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="~/LoginAndRegisterAssets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/LoginAndRegisterAssets/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
